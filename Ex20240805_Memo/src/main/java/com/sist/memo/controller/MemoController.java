@@ -97,6 +97,8 @@ public class MemoController {
     public Map<String, Object> edit(MemoVO mvo) {
         Map<String, Object> m_map = new HashMap<>();
 
+        System.out.println(mvo.getContent() + " || " + mvo.getWriter());
+
         int chk = m_service.edit(mvo);
 
         m_map.put("result", chk);
