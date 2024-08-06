@@ -1,14 +1,19 @@
-import { Table } from '@mui/material'
+import { Button, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
-export default function BbsList({b_ar, changePage, totalPage}) {
+export default function BbsList({b_ar, changePage, totalPage, nowPage}) {
+
+    const router = useRouter();
+
   return (
     <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
             <TableRow>
-                <TableCell>번호</TableCell>
-                <TableCell align="left">제목</TableCell>
+                <TableCell align="center">번호</TableCell>
+                <TableCell align="center">제목</TableCell>
                 <TableCell align="center">글쓴이</TableCell>
                 <TableCell align="center">등록일</TableCell>
                 <TableCell align="center">조회수</TableCell>
@@ -18,15 +23,26 @@ export default function BbsList({b_ar, changePage, totalPage}) {
             {b_ar.map((bvo,idx) => (
                 <TableRow key={idx}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row">
+                <TableCell align="center" component="th" scope="row">
                     {idx}
                 </TableCell>
-                <TableCell align="left">{bvo.subject}</TableCell>
+                <TableCell align="left">
+                    <Link href={`/bbs/detail/${bvo.b_idx}?nowPage=${nowPage}`}>{bvo.subject}</Link>
+                </TableCell>
                 <TableCell align="center">{bvo.writer}</TableCell>
                 <TableCell align="center">{bvo.write_date}</TableCell>
                 <TableCell align="center">{bvo.hit}</TableCell>
                 </TableRow>
             ))}
+            <TableRow>
+                <TableCell align='left' colSpan={4}>
+                    <Pagination color='primary' page={nowPage} count={totalPage} onClick={changePage}/>
+                </TableCell>
+                <TableCell>
+                    <Button onClick={()=>router.push('/bbs/write')}
+                    align='right' variant='contained'>글쓰기</Button>
+                </TableCell>
+            </TableRow>
             </TableBody>
         </Table>
     </TableContainer>

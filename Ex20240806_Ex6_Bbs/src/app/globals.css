@@ -103,10 +103,11 @@ a {
 
 
 /********************************/
-.nav{
-
+.navBar{
+  background-color: #fff;
+  padding: 20px;
 }
-
-.nav a{
-  
+.navBar a{
+  margin-right: 10px;
+  text-decoration: none;
 }
