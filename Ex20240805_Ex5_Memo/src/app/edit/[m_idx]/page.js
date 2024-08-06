@@ -8,16 +8,16 @@ export default function page(props) {
     const m_idx = props.params.m_idx;
     
     const [mvo, setMvo] = useState({});
-    const [content, setContent] = useState('');
-    const [writer, setWriter] = useState('');
+    // const [content, setContent] = useState('');
+    // const [writer, setWriter] = useState('');
 
     const API_URL = `/memo/getMemo?m_idx=${m_idx}`
 
     function getData(){
         axios.get(API_URL).then((res)=>{
             setMvo(res.data.mvo);
-            setContent(res.data.mvo.content);
-            setWriter(res.data.mvo.writer);
+            // setContent(res.data.mvo.content);
+            // setWriter(res.data.mvo.writer);
         });
     }
 
@@ -25,9 +25,9 @@ export default function page(props) {
         getData();
     },[m_idx]);
 
-    const changeTxt = (e) => {
-        setContent(e.target.value)
-    }
+    // const changeTxt = (e) => {
+    //     setContent(e.target.value)
+    // }
 
     function sendData(){
         let ff = document.forms[0];
@@ -49,9 +49,12 @@ export default function page(props) {
                 <Divider sx={{margin: '15px auto'}}/>
                 <form action='/api/post/edit' method='post'>
                     <input type='hidden' name='m_idx' value={m_idx}/><br/>
-                    <input type='text' style={{padding: 5, width: 150, margin: '5px 0'}} name='content' onChange={changeTxt} value={content}/><br/>
-                    <input type='text' style={{padding: 5, width: 150, margin: '5px 0', border: 'none'}} name='writer' readOnly value={writer}/><br/>
+                    {/* <input type='text' style={{padding: 5, width: 150, margin: '5px 0'}} name='content' onChange={changeTxt} value={content}/><br/>
+                    <input type='text' style={{padding: 5, width: 150, margin: '5px 0', border: 'none'}} name='writer' readOnly value={writer}/><br/> */}
+                    <input type='text' style={{padding: 5, width: 150, margin: '5px 0'}} name='content' defaultValue={mvo.content}/><br/>
+                    <input type='text' style={{padding: 5, width: 150, margin: '5px 0', border: 'none'}} name='writer' readOnly defaultValue={mvo.writer}/><br/>
                     <Button type='button' onClick={sendData} variant="contained">수정</Button>
+                    <Button href={`/detail/${m_idx}`} style={{margin:'0 0 0 10px'}} variant="contained" color='error'>취소</Button>
                 </form>
             </CardContent>
         </Card>
