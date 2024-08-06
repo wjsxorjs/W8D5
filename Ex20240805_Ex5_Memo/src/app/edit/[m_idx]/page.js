@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent, Divider } from '@mui/material';
+import { Button, Card, CardContent, Divider } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
@@ -48,9 +48,10 @@ export default function page(props) {
                 <h1>글 수정</h1>
                 <Divider sx={{margin: '15px auto'}}/>
                 <form action='/api/post/edit' method='post'>
+                    <input type='hidden' name='m_idx' value={m_idx}/><br/>
                     <input type='text' style={{padding: 5, width: 150, margin: '5px 0'}} name='content' onChange={changeTxt} value={content}/><br/>
                     <input type='text' style={{padding: 5, width: 150, margin: '5px 0', border: 'none'}} name='writer' readOnly value={writer}/><br/>
-                    <button type='button' onClick={sendData} style={{padding: 10, borderRadius: 8, background:'#ddd',width: 50, border:'none', margin: '5px 0'}}>수정</button>
+                    <Button type='button' onClick={sendData} variant="contained">수정</Button>
                 </form>
             </CardContent>
         </Card>

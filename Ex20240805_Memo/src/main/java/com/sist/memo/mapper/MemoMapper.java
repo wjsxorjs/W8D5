@@ -17,4 +17,6 @@ public interface MemoMapper {
 
     // int write(String content, String writer);
     int write(MemoVO mvo);
+    
+    int edit(MemoVO mvo);
 }

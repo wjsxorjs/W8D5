@@ -42,6 +42,7 @@ export default function page( props ) {
             <p>내용: {mvo.content}</p>
             <hr style={{margin:'10px 0'}}/>
             <Button variant="contained" color="success" onClick={edit}>편집</Button>
+            <Button variant="contained" style={{margin:'0 0 0 10px'}} href="/tableList">목록</Button>
         </CardContent>
     </Card>
     )

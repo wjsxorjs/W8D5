@@ -61,5 +61,11 @@
         VALUES(#{content},#{writer},#{ip},NOW())
     </insert>
 
+    <update id="edit" parameterType="com.sist.memo.vo.MemoVO">
+        UPDATE `memo_t`
+        SET content=#{content}, write_date=NOW()
+        WHERE m_idx=#{m_idx}
+    </update>
+
 
 </mapper>

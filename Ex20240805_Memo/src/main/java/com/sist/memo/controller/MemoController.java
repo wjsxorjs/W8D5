@@ -91,6 +91,19 @@ public class MemoController {
 
         return m_map;
     }
+
+    @RequestMapping("/edit")
+    @ResponseBody
+    public Map<String, Object> edit(MemoVO mvo) {
+        Map<String, Object> m_map = new HashMap<>();
+
+        int chk = m_service.edit(mvo);
+
+        m_map.put("result", chk);
+        // m_map.put("result", 1);
+
+        return m_map;
+    }
     
 
 }

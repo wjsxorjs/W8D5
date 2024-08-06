@@ -35,8 +35,11 @@ public class MemoService {
     }
 
     public int write(MemoVO mvo){
-        // return m_mapper.write(content, writer);
         return m_mapper.write(mvo);
+    }
+
+    public int edit(MemoVO mvo){
+        return m_mapper.edit(mvo);
     }
 
 
