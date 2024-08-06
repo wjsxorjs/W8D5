@@ -23,7 +23,7 @@ export default function page() {
     useEffect(() => { 
         // 무슨 사건이 있으면 무조건 호출되는 함수인 Callback 함수이다.
         console.log("화면갱신!")
-    },[cnt]);
+    },[]);
 
     return (
         <div>

@@ -15,5 +15,6 @@ public interface MemoMapper {
     
     MemoVO get_memo(String m_idx);
 
-    int write(String content, String writer);
+    // int write(String content, String writer);
+    int write(MemoVO mvo);
 }

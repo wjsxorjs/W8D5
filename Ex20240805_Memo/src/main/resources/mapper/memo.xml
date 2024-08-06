@@ -49,10 +49,17 @@
         WHERE m_idx = #{m_idx}
     </select>
 
-    <insert id="write" parameterType="Map">
+    <!-- <insert id="write" parameterType="Map">
         INSERT
         INTO `memo_t`(content,writer,write_date)
         VALUES(#{content},#{writer},NOW())
+    </insert> -->
+
+    <insert id="write" parameterType="com.sist.memo.vo.MemoVO">
+        INSERT
+        INTO `memo_t`(content,writer,ip,write_date)
+        VALUES(#{content},#{writer},#{ip},NOW())
     </insert>
+
 
 </mapper>

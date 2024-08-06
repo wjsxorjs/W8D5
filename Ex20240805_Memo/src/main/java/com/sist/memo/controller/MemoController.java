@@ -67,16 +67,29 @@ public class MemoController {
         return m_map;
     }
 
-    @PostMapping("/write")
-    public String write(@RequestParam String content, String writer) {
-        Map<String, Object> m_map = new HashMap<>();
+    // @PostMapping("/write")
+    // public String write(String content, String writer) {
+    //     Map<String, Object> m_map = new HashMap<>();
         
-        int chk = m_service.write(content, writer);
+    //     int chk = m_service.write(content, writer);
+
+    //     m_map.put("result", chk);
+    //     // m_map.put("result", 1);
+
+    //     return "/tableList";
+    // }
+
+    @RequestMapping("/write")
+    @ResponseBody
+    public Map<String, Object> write(MemoVO mvo) {
+        Map<String, Object> m_map = new HashMap<>();
+
+        int chk = m_service.write(mvo);
 
         m_map.put("result", chk);
         // m_map.put("result", 1);
 
-        return "/tableList";
+        return m_map;
     }
     
 

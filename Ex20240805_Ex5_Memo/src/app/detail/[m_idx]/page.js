@@ -1,7 +1,8 @@
 "use client"
 
-import { Card, CardContent } from "@mui/material";
+import { Button, Card, CardContent } from "@mui/material";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function page( props ) {
@@ -22,6 +23,12 @@ export default function page( props ) {
         });
     }
 
+    const router = useRouter();
+
+    function edit(){
+        router.push(`/edit/${mvo.m_idx}`);
+    }
+
     useEffect(()=>{
         getData();
     },[m_idx]);
@@ -33,6 +40,8 @@ export default function page( props ) {
             <h4>글쓴이: {mvo.writer}({mvo.ip})</h4>
             <p>작성일: {mvo.write_date}</p>
             <p>내용: {mvo.content}</p>
+            <hr style={{margin:'10px 0'}}/>
+            <Button variant="contained" color="success" onClick={edit}>편집</Button>
         </CardContent>
     </Card>
     )
